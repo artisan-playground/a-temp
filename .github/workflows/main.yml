@@ -27,6 +27,8 @@ jobs:
           CI= yarn build
           popd
           pwd
+          rm -Rf dist
+          mv -v react-app/build dist          
       - run: gcloud auth configure-docker
       - name: Local Build
         run: docker build -t "gcr.io/$PROJECT_ID/$REPO_NAME:${GITHUB_RUN_NUMBER}" .

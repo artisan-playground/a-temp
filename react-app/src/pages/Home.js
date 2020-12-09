@@ -1,8 +1,12 @@
-import React from 'react'
+import React,{useState} from 'react'
 import styled from 'styled-components'
 import List from '../components/List'
 import Graph from '../components/Graph'
 import Ranking from '../components/Ranking'
+import {useDispatch} from 'react-redux'
+import store from '../redux/store'
+import {currently} from '../redux/actions/Temporature'
+
 
 const Title = styled.div`
     display: flex;
@@ -17,7 +21,10 @@ const Title = styled.div`
     }
 `
 
+
+
 const Home = () => {
+    
     return (
         <>
             <Title>

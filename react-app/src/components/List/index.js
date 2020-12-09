@@ -3,6 +3,7 @@ import { ListTemp, ListComponents, CompoLeft, CompoRight, RealTime, BoxRealTime,
 import DisplayMaxTemporature from '../../services/DisplayMaxTemporature'
 import DisplayMinTemporature from '../../services/DisplayMinTemporature'
 import DisplayAvgTemporature from '../../services/DisplayAvgTemporature'
+import DisplayCurrentTemporature from '../../services/DisplayCurrentTemporature'
 
 
 const List = () => {
@@ -40,8 +41,7 @@ const List = () => {
                         <h2>NOW</h2>
                     </Top>
                     <Bottom>
-                        <h1>14 C</h1>
-                        <p>Chiang Mai</p>
+                        <DisplayCurrentTemporature />
                     </Bottom>
                 </RTDetails>
             </BoxRealTime>

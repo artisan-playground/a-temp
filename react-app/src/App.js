@@ -20,21 +20,21 @@ const ContentWrap = styled.div`
 function App() {
   return (
     <>
-    {/* <Connection /> */}
-    <PageContainer>
-    <ContentWrap>
-    <GlobalStyle />
-    <Router>
-      <NavBar />
-      <Suspense fallback='...Loading please wait...'>
-        <Switch>
-          <Route path="/" exact component={Home} />
-        </Switch>
-      </Suspense>
-      </Router>
-      </ContentWrap>
-      <Footer />
-    </PageContainer>
+{/* //      <Connection /> */}
+      <PageContainer>
+      <ContentWrap>
+      <GlobalStyle />
+      <Router>
+        <NavBar />
+        <Suspense fallback='...Loading please wait...'>
+          <Switch>
+            <Route path="/" exact component={Home} />
+          </Switch>
+        </Suspense>
+        </Router>
+        </ContentWrap>
+        <Footer />
+      </PageContainer>
     </>
   )
 }

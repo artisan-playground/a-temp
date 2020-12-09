@@ -2,11 +2,7 @@ import Temporature from '../../temporature'
 import {CURRENTLY} from '../constants/Temporature'
 
 const initialState = {
-    currentTemporature : {
-        id: "",
-        temporature : 0 ,
-        location : "none" 
-    },       
+    currentTemporature : 0,       
     maxTemporature : {
         id: "",
         temporature : 0 ,
@@ -25,10 +21,10 @@ const initialState = {
     temporatures : [ ] /// id,temporature,location 
 }
 
-export default (state = initialState, action) => {
+export default (state = initialState, action, temp) => {
     switch (action.type) {
         case CURRENTLY :
-            return {...state , currentTemporature: state.currentTemporature}
+            return {...state , currentTemporature: temp}
         default :
             return state
     }

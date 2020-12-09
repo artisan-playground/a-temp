@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import GlobalStyle from './components/GlobalStyle'
 import Footer from './components/Footer'
 import styled from 'styled-components'
+import Connection from './util/Connection'
 
 const PageContainer = styled.div`
   display: flex;
@@ -19,6 +20,7 @@ const ContentWrap = styled.div`
 function App() {
   return (
     <>
+    <Connection />
     <PageContainer>
     <ContentWrap>
     <GlobalStyle />

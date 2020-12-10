@@ -10,6 +10,7 @@ import {currently} from '../redux/actions/Temporature'
 
 
 const Title = styled.div`
+    padding-top: 5vh;
     img{
         width: 100%;
     }

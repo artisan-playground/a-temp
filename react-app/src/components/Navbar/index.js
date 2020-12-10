@@ -6,7 +6,7 @@ const Navbar = () => {
     <>
       <Nav>
         <NavLogo to="/">
-          <h1>-LOGO-</h1>
+          <h1>LOGO</h1>
         </NavLogo>
         <Bars />
         <NavMenu>

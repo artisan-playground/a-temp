@@ -19,7 +19,16 @@ jobs:
           version: 'latest'
           service_account_key: ${{ env.SA }}
           project_id: ${{ env.PROJECT_ID }}
-      - run: chmod+x buld.sh; ./build.sh react-app
+      - run: | 
+          chmod +x build.sh
+          # ./build.sh react-app
+          pushd "react-app"
+          yarn install
+          CI= yarn build
+          popd
+          pwd
+          rm -Rf dist
+          mv -v react-app/build dist          
       - run: gcloud auth configure-docker
       - name: Local Build
         run: docker build -t "gcr.io/$PROJECT_ID/$REPO_NAME:${GITHUB_RUN_NUMBER}" .

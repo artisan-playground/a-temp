@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env /bin/bash
+
+
 set -e
 
 args=("$@")

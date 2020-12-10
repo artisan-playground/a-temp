@@ -13,7 +13,7 @@ let minTemp = 0
 
 function DisplayCurrentTemporature() {
   
-  const [millis, setMillis] = useState(0)
+  const [temp, setTemp] = useState(0)
 
   var note;
   client.on('connect', function () {
@@ -22,26 +22,23 @@ function DisplayCurrentTemporature() {
   client.on('message', function (topic, message) {
     note = message.toString()
     note = JSON.parse(note)
-    setMillis(note.d.temperature)
+    setTemp(note.d.temperature)
     console.log(topic, note.d.myName, note.d.temperature, note.d.humidity, note);
   })
-  if (millis > maxTemp) {
-    maxTemp = millis
+
+  if (temp > maxTemp) {
+    maxTemp = temp
     console.log(maxTemp)
   }
-  if (millis <= minTemp) {
-    minTemp = millis
+  if (temp <= minTemp) {
+    minTemp = temp
     console.log(minTemp)
   }
   
-
     return (
     <>
       <div>
-        {millis}
-      </div>    
-      <div>
-        {millis}
+        {temp}
       </div>
     </>
   )

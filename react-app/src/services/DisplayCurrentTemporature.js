@@ -21,7 +21,7 @@ function DisplayCurrentTemporature() {
        note = message.toString()
        note = JSON.parse(note)
        setMillis(note.d.millis)
-       console.log(topic, note.d.myName, note.d.temp, note.d.humid, note);
+       console.log(topic, note.d.myName, note.d.temporature, note.d.humidity, note);
    })
 
    const [millis, setMillis] = useState()

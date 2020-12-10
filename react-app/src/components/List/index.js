@@ -42,6 +42,7 @@ const List = () => {
                     </Top>
                     <Bottom>
                         <DisplayCurrentTemporature />
+                        <h1>Chiang Mai</h1>
                     </Bottom>
                 </RTDetails>
             </BoxRealTime>

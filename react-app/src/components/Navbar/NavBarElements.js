@@ -4,13 +4,16 @@ import { FaBars } from 'react-icons/fa'
 
 export const Nav = styled.nav`
     height: 80px;
+    width: 100vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0.5rem;
     z-index: 10;
+    position: fixed;
     background-color: whitesmoke;
     color: black;
+    box-shadow: 0px -22px 50px #000000;
 
     a {
       height: 30px;

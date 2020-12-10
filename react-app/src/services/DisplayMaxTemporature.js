@@ -5,6 +5,9 @@ import styled from 'styled-components'
 const Max = styled.div`
   font-size: 25px;
   font-weight: bold;
+  h1{
+    font-size: 15px;
+  }
 `
 var mqtt    = require('mqtt')
 var options = {
@@ -12,7 +15,7 @@ var options = {
     clientId: 'b0908853' + Math.random()   
 }
 var client  = mqtt.connect('mqtt://mqtt.artisandigital.tech:8883', options);
-client.subscribe('dii/+/status');
+client.subscribe('dii/Arm-001/status');
 
 function DisplayMvgTemporature() {
   const maxTemporature = useSelector(state => state.maxTemporature)
@@ -24,8 +27,8 @@ function DisplayMvgTemporature() {
   client.on('message', function (topic, message) {
       note = message.toString()
       note = JSON.parse(note)
-      setMillis(note.d.millis)
-      console.log(topic, note.d.myName, note.d.temp, note.d.humid, note);
+      setMillis(note.d.temperature)
+      console.log(topic, note.d.myName, note.d.temperature, note.d.humid, note);
   })
 
   const [millis, setMillis] = useState()
@@ -36,7 +39,7 @@ function DisplayMvgTemporature() {
         {millis}
       </Max>    
       <Max>
-        {millis}
+        <h1>My Home</h1>
       </Max>
     </>
 

@@ -20,8 +20,8 @@ function DisplayCurrentTemporature() {
    client.on('message', function (topic, message) {
        note = message.toString()
        note = JSON.parse(note)
-       setMillis(note.d.millis)
-       console.log(topic, note.d.myName, note.d.temporature, note.d.humidity, note);
+       setMillis(note.d.temperature)
+       console.log(topic, note.d.myName, note.d.temperature, note.d.humidity, note);
    })
 
    const [millis, setMillis] = useState()
@@ -29,9 +29,6 @@ function DisplayCurrentTemporature() {
 
     return (
     <>
-      <div>
-        {millis}
-      </div>    
       <div>
         {millis}
       </div>

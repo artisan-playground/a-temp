@@ -4,6 +4,9 @@ import styled from 'styled-components'
 const Max = styled.div`
   font-size: 25px;
   font-weight: bold;
+  h1{
+    font-size: 15px;
+  }
 `
 var mqtt    = require('mqtt')
 var options = {
@@ -11,7 +14,7 @@ var options = {
     clientId: 'b0908853' + Math.random()   
 }
 var client  = mqtt.connect('mqtt://mqtt.artisandigital.tech:8883', options);
-client.subscribe('dii/+/status');
+client.subscribe('dii/Arm-001/status');
 
 function DisplayMaxTemporature() {
 

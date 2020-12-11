@@ -105,4 +105,8 @@ export const Bottom = styled.div`
     align-items: center;
     flex-direction: column;
     border-radius: 0 0 50px 50px;
+    h1 {
+        font-size: 30px;
+        margin: 20px 0;
+    }
 `

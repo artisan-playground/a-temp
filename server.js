@@ -5,6 +5,7 @@ const cors = require('cors')
 
 const pkg = require('./package.json')
 const version = pkg.version
+const fetch = require('node-fetch')
 
 const app = express()
 
@@ -34,8 +35,29 @@ app.get('/api/firebase/random', async (req, res) => {
   await docRef1.set({ hello: `world: ${new Date().getTime()}` })
   res.status(200).send('firebase !')
 })
+
 app.get('/api', (req, res) => {
   res.status(200).send(`Welcome to webapp-starter api v${version}`)
+})
+
+app.get('/query', (req, res) => {
+  // console.log(req.originalUrl)
+  // console.log(req.query)
+
+  fetch(`http://database.trwl.club:8086${req.originalUrl}`)
+    .then((res) => res.json())
+    .then((json) => {
+      // console.log(json)
+      for (const result of json.results) {
+        console.log(`> [statement_id] `, result.statement_id)
+        for (const ds of result.series) {
+          console.log(ds.name)
+          console.log(ds.columns)
+          // console.log(ds.values)
+        }
+      }
+      res.status(200).send(json)
+    })
 })
 
 app.get('/api/version', (req, res) => {

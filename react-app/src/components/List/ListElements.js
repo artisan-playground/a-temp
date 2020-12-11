@@ -19,7 +19,7 @@ export const ListComponents = styled.div`
 `
 
 export const CompoLeft = styled.div`
-    background-color: #CFE7F7;
+    background-color: #66CDAA;
     width: 40%;
     height: 100px;
     border-radius: 30px 0 0 30px;
@@ -85,7 +85,7 @@ export const RTDetails = styled.div`
 `
 
 export const Top = styled.div`
-    background-color: #CFE7F7;
+    background-color: #66CDAA;
     width: 100%;
     height: 100px;
     color: #fff;

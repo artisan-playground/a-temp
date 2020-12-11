@@ -2,6 +2,7 @@ import React, { Suspense } from 'react'
 import NavBar from './components/Navbar'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Home from './pages/Home'
+import Charts from './pages/Charts'
 import GlobalStyle from './components/GlobalStyle'
 import Footer from './components/Footer'
 import styled from 'styled-components'
@@ -20,18 +21,19 @@ const ContentWrap = styled.div`
 function App() {
   return (
     <>
-{/* //      <Connection /> */}
+      {/* //      <Connection /> */}
       <PageContainer>
-      <ContentWrap>
-      <GlobalStyle />
-      <Router>
-        <NavBar />
-        <Suspense fallback='...Loading please wait...'>
-          <Switch>
-            <Route path="/" exact component={Home} />
-          </Switch>
-        </Suspense>
-        </Router>
+        <ContentWrap>
+          <GlobalStyle />
+          <Router>
+            <NavBar />
+            <Suspense fallback="...Loading please wait...">
+              <Switch>
+                <Route path="/" exact component={Home} />
+                <Route path="/Charts" exact component={Charts} />
+              </Switch>
+            </Suspense>
+          </Router>
         </ContentWrap>
         <Footer />
       </PageContainer>

@@ -2,6 +2,15 @@ import React,{useState,useEffect} from 'react'
 import { ListTemp, ListComponents, CompoLeft, CompoRight, RealTime, BoxRealTime, RTDetails, Top, Bottom } from './ListElements'
 import DisplayAvgTemporature from '../../services/DisplayAvgTemporature'
 import DisplayCurrentTemporature from '../../services/DisplayCurrentTemporature'
+import styled from 'styled-components'
+
+const Value = styled.div`
+  font-size: 25px;
+  font-weight: bold;
+  h1{
+    font-size: 15px;
+  }
+`
 
 const mqtt    = require('mqtt')
 const options = {
@@ -12,12 +21,13 @@ const client  = mqtt.connect('mqtt://mqtt.artisandigital.tech:8883', options)
 client.subscribe('dii/+/status')
 
     let note
-    let minTemp = NaN
-    let maxTemp = NaN
+    let minTemp = 0
+    let maxTemp = 0
+    let min = 0
 
 const List = () => {
       
-    const [temp, setTemp] = useState(0)
+    const [temp, setTemp] = useState()
 
         client.on('connect', function () {
             console.log("connect")
@@ -28,19 +38,15 @@ const List = () => {
             if ( note.d.myName ===  "Boat-001") {
                 setTemp(note.d.temperature)            
             }
-            console.log(note)
+            
         })
-
-
 
     if (temp > maxTemp) {
         maxTemp = temp
-        minTemp = temp
     }
 
-    if (temp < minTemp) {
-        minTemp = temp
-        console.log("yse")
+    if (min < minTemp) {
+        minTemp = min
     }
 
     fetch(
@@ -57,9 +63,9 @@ const List = () => {
                         <h1>Max</h1>
                     </CompoLeft>
                     <CompoRight>
-                        <div>
+                        <Value>
                             {maxTemp}                            
-                        </div>
+                        </Value>
                     </CompoRight>
                 </ListComponents>
                 <ListComponents>
@@ -67,9 +73,9 @@ const List = () => {
                         <h1>Min</h1>
                     </CompoLeft>
                     <CompoRight>
-                        <div>
+                        <Value>
                             {minTemp}                            
-                        </div>
+                        </Value>
                     </CompoRight>
                 </ListComponents>
                 <ListComponents>

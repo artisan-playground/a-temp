@@ -1,16 +1,20 @@
+import { Index, TimeSeries } from 'pondjs'
 import React from 'react'
-import { render } from 'react-dom'
-import { TimeSeries, Index } from 'pondjs'
 import {
-  Resizable,
-  Charts,
+  BarChart,
   ChartContainer,
   ChartRow,
-  YAxis,
-  BarChart,
+  Charts,
+  Resizable,
   styler,
+  YAxis,
 } from 'react-timeseries-charts'
+import styled from 'styled-components'
 import data from '../services/Data'
+
+const Test = styled.div`
+  margin-top: 200px;
+`
 
 class SimpleChart extends React.Component {
   render() {
@@ -30,31 +34,33 @@ class SimpleChart extends React.Component {
     ])
 
     return (
-      <Resizable>
-        <ChartContainer timeRange={series.range()}>
-          <ChartRow height="150">
-            <YAxis
-              id="rain"
-              label="Rainfall (inches/hr)"
-              min={0}
-              max={2}
-              format=".2f"
-              width="70"
-              type="linear"
-            />
-            <Charts>
-              <BarChart
-                axis="rain"
-                style={style}
-                spacing={1}
-                columns={['precip']}
-                series={series}
-                minBarHeight={1}
+      <Test>
+        <Resizable>
+          <ChartContainer timeRange={series.range()}>
+            <ChartRow height="150">
+              <YAxis
+                id="rain"
+                label="Rainfall (inches/hr)"
+                min={0}
+                max={2}
+                format=".2f"
+                width="70"
+                type="linear"
               />
-            </Charts>
-          </ChartRow>
-        </ChartContainer>
-      </Resizable>
+              <Charts>
+                <BarChart
+                  axis="rain"
+                  style={style}
+                  spacing={1}
+                  columns={['precip']}
+                  series={series}
+                  minBarHeight={1}
+                />
+              </Charts>
+            </ChartRow>
+          </ChartContainer>
+        </Resizable>
+      </Test>
     )
   }
 }

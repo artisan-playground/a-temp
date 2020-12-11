@@ -1,6 +1,6 @@
-import React from "react";
-import { render } from "react-dom";
-import { TimeSeries, Index } from "pondjs";
+import React from 'react'
+import { render } from 'react-dom'
+import { TimeSeries, Index } from 'pondjs'
 import {
   Resizable,
   Charts,
@@ -8,29 +8,26 @@ import {
   ChartRow,
   YAxis,
   BarChart,
-  styler
-} from "react-timeseries-charts";
-import data from "../services/Data";
+  styler,
+} from 'react-timeseries-charts'
+import data from '../services/Data'
 
 class SimpleChart extends React.Component {
   render() {
     const series = new TimeSeries({
-      name: "hilo_rainfall",
-      columns: ["index", "precip"],
-      points: data.values.map(([d, value]) => [
-        Index.getIndexString("1h", new Date(d)),
-        value
-      ])
-    });
+      name: 'hilo_rainfall',
+      columns: ['index', 'precip'],
+      points: data.values.map(([d, value]) => [Index.getIndexString('1h', new Date(d)), value]),
+    })
 
-    console.log("series is ", series);
+    console.log('series is ', series)
     const style = styler([
       {
-        key: "precip",
-        color: "#A5C8E1",
-        selected: "#2CB1CF"
-      }
-    ]);
+        key: 'precip',
+        color: '#A5C8E1',
+        selected: '#2CB1CF',
+      },
+    ])
 
     return (
       <Resizable>
@@ -50,7 +47,7 @@ class SimpleChart extends React.Component {
                 axis="rain"
                 style={style}
                 spacing={1}
-                columns={["precip"]}
+                columns={['precip']}
                 series={series}
                 minBarHeight={1}
               />
@@ -58,20 +55,22 @@ class SimpleChart extends React.Component {
           </ChartRow>
         </ChartContainer>
       </Resizable>
-    );
+    )
   }
 }
 
-class App extends React.Component {
-  state = {};
+export default SimpleChart
 
-  render() {
-    return (
-      <div className="p-3 m-4 border border-muted">
-        <SimpleChart />
-      </div>
-    );
-  }
-}
+// class App extends React.Component {
+//   state = {};
 
-render(<App />, document.getElementById("root"));
+//   render() {
+//     return (
+//       <div className="p-3 m-4 border border-muted">
+//         <SimpleChart />
+//       </div>
+//     );
+//   }
+// }
+
+// render(<App />, document.getElementById("root"));

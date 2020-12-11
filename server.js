@@ -39,7 +39,7 @@ app.get('/api', (req, res) => {
 })
 
 app.get('/api/version', (req, res) => {
-  res.status(200).send(`${version}`)
+  res.status(200).send(`${version}-3`)
 })
 
 app.post('/api/line/webhook', require('./server.line.js').webhook)

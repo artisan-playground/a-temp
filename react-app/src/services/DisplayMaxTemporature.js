@@ -24,7 +24,7 @@ function DisplayMaxTemporature() {
   client.on('message', function (topic, message) {
       note = message.toString()
       note = JSON.parse(note)
-      setTemp(note.d.temperature)
+      // setTemp(note.d.temperature)
   })
   
 

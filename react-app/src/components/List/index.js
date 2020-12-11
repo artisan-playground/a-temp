@@ -1,53 +1,99 @@
-import React from 'react'
-import { ListTemp, ListComponents, CompoLeft, CompoRight, RealTime, BoxRealTime, RTDetails, Top, Bottom } from './ListElements'
-import DisplayMaxTemporature from '../../services/DisplayMaxTemporature'
-import DisplayMinTemporature from '../../services/DisplayMinTemporature'
+import React, { useState, useEffect } from 'react'
+import {
+  ListTemp,
+  ListComponents,
+  CompoLeft,
+  CompoRight,
+  RealTime,
+  BoxRealTime,
+  RTDetails,
+  Top,
+  Bottom,
+} from './ListElements'
 import DisplayAvgTemporature from '../../services/DisplayAvgTemporature'
 import DisplayCurrentTemporature from '../../services/DisplayCurrentTemporature'
 
+const mqtt = require('mqtt')
+const options = {
+  protocol: 'mqtts',
+  clientId: 'b0908853' + Math.random(),
+}
+const client = mqtt.connect('mqtt://mqtt.artisandigital.tech:8883', options)
+client.subscribe('dii/+/status')
+
+let note
+let minTemp = NaN
+let maxTemp = NaN
 
 const List = () => {
-    return (
-        <RealTime>
-            <ListTemp>
-                <ListComponents>
-                    <CompoLeft>
-                        <h1>Max</h1>
-                    </CompoLeft>
-                    <CompoRight>
-                        <DisplayMaxTemporature />
-                    </CompoRight>
-                </ListComponents>
-                <ListComponents>
-                    <CompoLeft>
-                        <h1>Min</h1>
-                    </CompoLeft>
-                    <CompoRight>
-                        <DisplayMinTemporature />
-                    </CompoRight>
-                </ListComponents>
-                <ListComponents>
-                    <CompoLeft>
-                        <h1>Average</h1>
-                    </CompoLeft>
-                    <CompoRight>
-                        <DisplayAvgTemporature />
-                    </CompoRight>
-                </ListComponents>
-            </ListTemp>
-            <BoxRealTime>
-                <RTDetails>
-                    <Top>
-                        <h2>NOW</h2>
-                    </Top>
-                    <Bottom>
-                        <DisplayCurrentTemporature />
-                        <h1>Chiang Mai</h1>
-                    </Bottom>
-                </RTDetails>
-            </BoxRealTime>
-        </RealTime>
-    )
+  const [temp, setTemp] = useState(0)
+
+  client.on('connect', function () {
+    console.log('connect')
+  })
+  client.on('message', function (topic, message) {
+    note = message.toString()
+    note = JSON.parse(note)
+    if (note.d.myName === 'Boat-001') {
+      setTemp(note.d.temperature)
+    }
+    console.log(note)
+  })
+
+  if (temp > maxTemp) {
+    maxTemp = temp
+    minTemp = temp
+  }
+
+  if (temp < minTemp) {
+    minTemp = temp
+    console.log('yse')
+  }
+
+  fetch(
+    '/query?db=dii&q=SELECT%20mean(%22d_temperature%22)%20FROM%20%22v1%22%20WHERE%20(%22topic%22%20%3D%20%27dii%2FArm-001%2Fstatus%27)%20AND%20time%20%3E%3D%20now()%20-%203h%20GROUP%20BY%20time(15s)%20fill(null)%3BSELECT%20mean(%22d_temperature%22)%20FROM%20%22v1%22%20WHERE%20(%22topic%22%20%3D%20%27dii%2FBoat-001%2Fstatus%27)%20AND%20time%20%3E%3D%20now()%20-%203h%20GROUP%20BY%20time(15s)%20fill(null)&epoch=ms'
+  )
+
+  return (
+    <RealTime>
+      <ListTemp>
+        <ListComponents>
+          <CompoLeft>
+            <h1>Max</h1>
+          </CompoLeft>
+          <CompoRight>
+            <div>{maxTemp}</div>
+          </CompoRight>
+        </ListComponents>
+        <ListComponents>
+          <CompoLeft>
+            <h1>Min</h1>
+          </CompoLeft>
+          <CompoRight>
+            <div>{minTemp}</div>
+          </CompoRight>
+        </ListComponents>
+        <ListComponents>
+          <CompoLeft>
+            <h1>Average</h1>
+          </CompoLeft>
+          <CompoRight>
+            <DisplayAvgTemporature />
+          </CompoRight>
+        </ListComponents>
+      </ListTemp>
+      <BoxRealTime>
+        <RTDetails>
+          <Top>
+            <h2>NOW</h2>
+          </Top>
+          <Bottom>
+            <div>{temp}</div>
+          </Bottom>
+        </RTDetails>
+      </BoxRealTime>
+    </RealTime>
+  )
 }
 
 export default List

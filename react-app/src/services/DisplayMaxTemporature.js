@@ -1,5 +1,4 @@
-import React,{useState} from 'react'
-import {useSelector} from 'react-redux'
+import React,{useState,useEffect} from 'react'
 import styled from 'styled-components'
 
 const Max = styled.div`
@@ -17,9 +16,10 @@ var options = {
 var client  = mqtt.connect('mqtt://mqtt.artisandigital.tech:8883', options);
 client.subscribe('dii/Arm-001/status');
 
-function DisplayMvgTemporature() {
-  const maxTemporature = useSelector(state => state.maxTemporature)
+function DisplayMaxTemporature() {
 
+  const [maxTemp, setMaxTemp] = useState(0)
+  const [temp, setTemp] = useState(0)
   var note;
   client.on('connect', function () {
     console.log("connect")
@@ -27,23 +27,22 @@ function DisplayMvgTemporature() {
   client.on('message', function (topic, message) {
       note = message.toString()
       note = JSON.parse(note)
-      setMillis(note.d.temperature)
-      console.log(topic, note.d.myName, note.d.temperature, note.d.humid, note);
+      // setTemp(note.d.temperature)
   })
+  
 
-  const [millis, setMillis] = useState()
-
+  if (temp > maxTemp) {
+    setMaxTemp(temp)
+  }
+  
   return (
     <>
       <Max>
-        {millis}
+        {maxTemp}
       </Max>    
-      <Max>
-        <h1>My Home</h1>
-      </Max>
     </>
 
   )
 }
 
-export default DisplayMvgTemporature;
+export default DisplayMaxTemporature;

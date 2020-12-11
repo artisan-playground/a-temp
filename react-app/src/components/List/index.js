@@ -18,7 +18,7 @@ const options = {
   clientId: 'b0908853' + Math.random()   
 }
 const client  = mqtt.connect('mqtt://mqtt.artisandigital.tech:8883', options)
-client.subscribe('dii/+/status')
+client.subscribe('dii/Boat-001/status')
 
     let note
     let minTemp = 0

@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import DisplayAvgTemporature from '../../services/DisplayAvgTemporature'
 import {
   Bottom,
   BoxRealTime,
@@ -80,9 +79,7 @@ const List = () => {
           <CompoLeft>
             <h1>Average</h1>
           </CompoLeft>
-          <CompoRight>
-            <DisplayAvgTemporature />
-          </CompoRight>
+          <CompoRight>{/* <DisplayAvgTemporature /> */}</CompoRight>
         </ListComponents>
       </ListTemp>
       <BoxRealTime>

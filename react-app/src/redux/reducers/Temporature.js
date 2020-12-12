@@ -1,4 +1,4 @@
-import Temporature from '../../temporature'
+
 import {CURRENTLY} from '../constants/Temporature'
 
 const initialState = {

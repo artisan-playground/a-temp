@@ -6,7 +6,8 @@ import Charts from './pages/Charts'
 import GlobalStyle from './components/GlobalStyle'
 import Footer from './components/Footer'
 import styled from 'styled-components'
-// import Connection from './util/Connection'
+import TempValueContext from './contexts/TempValueContext'
+import Connection from './services/Connection'
 
 const PageContainer = styled.div`
   display: flex;
@@ -21,22 +22,26 @@ const ContentWrap = styled.div`
 function App() {
   return (
     <>
-      {/* //      <Connection /> */}
-      <PageContainer>
-        <ContentWrap>
-          <GlobalStyle />
-          <Router>
-            <NavBar />
-            <Suspense fallback="...Loading please wait...">
-              <Switch>
-                <Route path="/" exact component={Home} />
-                <Route path="/Charts" exact component={Charts} />
-              </Switch>
-            </Suspense>
-          </Router>
-        </ContentWrap>
-        <Footer />
-      </PageContainer>
+      
+      <TempValueContext>
+      <Connection />
+        <PageContainer>
+          <ContentWrap>
+            <GlobalStyle />
+            <Router>
+              <NavBar />
+              <Suspense fallback="...Loading please wait...">
+                <Switch>
+                  <Route path="/" exact component={Home} />
+                  <Route path="/Charts" exact component={Charts} />
+                </Switch>
+              </Suspense>
+            </Router>
+          </ContentWrap>
+          <Footer />
+        </PageContainer>        
+      </TempValueContext>
+
     </>
   )
 }

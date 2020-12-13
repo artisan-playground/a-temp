@@ -3,10 +3,12 @@ import styled from 'styled-components'
 
 const Table = styled.div`
   display: flex;
-  font-weight: 900;
-  font-size: 20px;
-  margin-top: 10px;
+  font-weight: 600;
+  margin: 10px 0;
+  font-size: 15px;
   &:first-child {
+    font-size: 20px;
+    padding: 6px 0;
     .cell-table {
       padding: 14px 0px;
       text-align: center;

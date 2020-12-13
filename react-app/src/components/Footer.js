@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import styled from 'styled-components'
 
 const MainFooter = styled.footer`
@@ -9,7 +9,7 @@ const MainFooter = styled.footer`
   height: 150px;
   display: flex;
   flex-direction: column;
-  align-items:center;
+  align-items: center;
   background-color: whitesmoke;
   h1 {
     font-size: 30px;
@@ -20,12 +20,12 @@ const MainFooter = styled.footer`
 `
 
 const Footer = () => {
-    return (
+  return (
     <MainFooter>
-        <h1>LOGO</h1>
-        <p>2020 Artisan Digital Asia</p>
+      <h1>LOGO</h1>
+      <p>© 2020 Artisan Digital Asia</p>
     </MainFooter>
-    )
-  }
-  
-  export default Footer
+  )
+}
+
+export default Footer

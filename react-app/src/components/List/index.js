@@ -1,25 +1,13 @@
 import React, { useContext } from 'react'
-import styled from 'styled-components'
 import { TempValueContextWrapper } from '../../contexts/TempValueContext'
+import Map from '../../layout/map'
+import TempBox from '../../layout/TempBox'
 import {
-  Bottom,
   BoxRealTime,
-  CompoLeft,
-  CompoRight,
-  ListComponents,
   ListTemp,
-  RealTime,
-  RTDetails,
-  Top
+  RealTime
 } from './ListElements'
 
-const Value = styled.div`
-  font-size: 25px;
-  font-weight: bold;
-  h1 {
-    font-size: 15px;
-  }
-`
 
 const List = () => {
   const { temp1, maxTemp, minTemp, tempAvg } = useContext(TempValueContextWrapper)
@@ -30,42 +18,21 @@ const List = () => {
 
   return (
     <RealTime>
+
       <ListTemp>
-        <ListComponents>
-          <CompoLeft>
-            <h1>Max</h1>
-          </CompoLeft>
-          <CompoRight>
-            <Value>{maxTemp}</Value>
-          </CompoRight>
-        </ListComponents>
-        <ListComponents>
-          <CompoLeft>
-            <h1>Min</h1>
-          </CompoLeft>
-          <CompoRight>
-            <Value>{minTemp}</Value>
-          </CompoRight>
-        </ListComponents>
-        <ListComponents>
-          <CompoLeft>
-            <h1>Average</h1>
-          </CompoLeft>
-          <CompoRight>
-            <Value>{tempAvg}</Value>
-          </CompoRight>
-        </ListComponents>
+
+        <TempBox Hander='MAX' Temp={maxTemp} />
+
+        <TempBox Hander='MIN' Temp={minTemp} />
+
+        <TempBox Hander='NOW' Temp={tempAvg} />
+
       </ListTemp>
+
       <BoxRealTime>
-        <RTDetails>
-          <Top>
-            <h2>NOW</h2>
-          </Top>
-          <Bottom>
-            <div>{temp1}</div>
-          </Bottom>
-        </RTDetails>
+        <Map />
       </BoxRealTime>
+
     </RealTime>
   )
 }

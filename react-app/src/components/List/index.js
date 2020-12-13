@@ -10,7 +10,7 @@ import {
   ListTemp,
   RealTime,
   RTDetails,
-  Top,
+  Top
 } from './ListElements'
 
 const Value = styled.div`

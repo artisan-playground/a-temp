@@ -17,7 +17,7 @@ export const RankingComponents = styled.div`
 
 export const RankingDetails = styled.div`
   background-color: #fff;
-  height: 90vh;
   width: 100%;
   border-radius: 50px;
+  padding-bottom: 10px;
 `

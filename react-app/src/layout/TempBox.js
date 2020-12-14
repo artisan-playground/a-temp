@@ -40,14 +40,11 @@ const CompoRight = styled.div`
     p {
         font-size: 15px;
     }
-`
-
-const Value = styled.div`
-  font-size: 25px;
-  font-weight: bold;
-  h1 {
-    font-size: 15px;
-  }
+    font-size: 25px;
+    font-weight: bold;
+    h1 {
+      font-size: 15px;
+    }
 `
 
 const TempBox = ({Hander, Temp}) => {

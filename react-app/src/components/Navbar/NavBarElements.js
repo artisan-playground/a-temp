@@ -1,9 +1,9 @@
-import styled from 'styled-components'
-import { NavLink as Link } from 'react-router-dom'
 import { FaBars } from 'react-icons/fa'
+import { NavLink as Link } from 'react-router-dom'
+import styled from 'styled-components'
 
 export const Nav = styled.nav`
-    height: 80px;
+    height: 8vh;
     width: 100vw;
     display: flex;
     justify-content: space-between;
@@ -13,7 +13,7 @@ export const Nav = styled.nav`
     position: fixed;
     background-color: whitesmoke;
     color: black;
-    box-shadow: 0px -22px 50px #000000;
+    box-shadow: -2vw -18px 35px #000000;
 
     a {
       height: 30px;

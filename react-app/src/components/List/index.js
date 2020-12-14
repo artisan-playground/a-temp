@@ -5,7 +5,8 @@ import TempBox from '../../layout/TempBox'
 import {
   BoxRealTime,
   ListTemp,
-  RealTime
+  RealTime,
+  Wrapper
 } from './ListElements'
 
 
@@ -17,6 +18,7 @@ const List = () => {
   // )
 
   return (
+
     <RealTime>
 
       <ListTemp>
@@ -30,10 +32,13 @@ const List = () => {
       </ListTemp>
 
       <BoxRealTime>
-        <Map />
+        <Wrapper>
+          <Map />
+        </Wrapper>
       </BoxRealTime>
 
     </RealTime>
+
   )
 }
 

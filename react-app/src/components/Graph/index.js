@@ -1,7 +1,6 @@
 import { Index, TimeSeries } from 'pondjs'
 import React from 'react'
 import { ChartContainer, ChartRow, Charts, LineChart, styler, YAxis } from 'react-timeseries-charts'
-import BgGraph from '../../assets/BgGraph.png'
 import data2 from '../../services/Data'
 import { GraphComponents, GraphDetails } from './GraphElements'
 
@@ -84,7 +83,6 @@ class Graph extends React.Component {
       <GraphComponents>
         <h1>GRAPH</h1>
         <GraphDetails>
-          <img src={BgGraph} />
           <ChartContainer
             utc={this.state.mode === 'utc'}
             timeRange={tempSeries.timerange()}

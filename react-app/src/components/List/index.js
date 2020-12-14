@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { TempValueContextWrapper } from '../../contexts/TempValueContext'
-import Map2 from '../../layout/map2'
+import Map from '../../layout/map'
 import TempBox from '../../layout/TempBox'
 import {
   BoxRealTime,
@@ -33,7 +33,7 @@ const List = () => {
 
       <BoxRealTime>
         <Wrapper>
-          <Map2 />
+          <Map />
         </Wrapper>
       </BoxRealTime>
 

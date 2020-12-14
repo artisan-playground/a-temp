@@ -1,12 +1,11 @@
 import React, { Suspense } from 'react'
-import NavBar from './components/Navbar'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import Home from './pages/Home'
-import Charts from './pages/Charts'
-import GlobalStyle from './components/GlobalStyle'
-import Footer from './components/Footer'
 import styled from 'styled-components'
+import Footer from './components/Footer'
+import GlobalStyle from './components/GlobalStyle'
+import NavBar from './components/Navbar'
 import TempValueContext from './contexts/TempValueContext'
+import Home from './pages/Home'
 import Connection from './services/Connection'
 
 const PageContainer = styled.div`
@@ -22,9 +21,8 @@ const ContentWrap = styled.div`
 function App() {
   return (
     <>
-      
       <TempValueContext>
-      <Connection />
+        <Connection />
         <PageContainer>
           <ContentWrap>
             <GlobalStyle />
@@ -33,15 +31,13 @@ function App() {
               <Suspense fallback="...Loading please wait...">
                 <Switch>
                   <Route path="/" exact component={Home} />
-                  <Route path="/Charts" exact component={Charts} />
                 </Switch>
               </Suspense>
             </Router>
           </ContentWrap>
           <Footer />
-        </PageContainer>        
+        </PageContainer>
       </TempValueContext>
-
     </>
   )
 }

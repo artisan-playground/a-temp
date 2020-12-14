@@ -13,13 +13,13 @@ const Ranking = () => {
 
         {temp1 > temp2 ? (
           <>
-            <TableCard No="1" Location="Artisan" Temperature={temp1} />
-            <TableCard No="2" Location="My Home" Temperature={temp2} />
+            <TableCard No="1" Location="Artisan" Temperature={temp1 +"  °C"} />
+            <TableCard No="2" Location="My Home" Temperature={temp2 +"  °C"} />
           </>
         ) : (
           <>
-            <TableCard No="1" Location="My Home" Temperature={temp2} />
-            <TableCard No="2" Location="Artisan" Temperature={temp1} />
+            <TableCard No="1" Location="My Home" Temperature={temp2 +"  °C"} />
+            <TableCard No="2" Location="Artisan" Temperature={temp1 +"  °C"} />
           </>
         )}
       </RankingDetails>

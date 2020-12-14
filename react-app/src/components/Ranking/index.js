@@ -4,7 +4,7 @@ import TableCard from '../../layout/Table'
 import { RankingComponents, RankingDetails } from './RankingElements'
 
 const Ranking = () => {
-  const { temp1, temp2, maxTemp, minTemp, tempAvg } = useContext(TempValueContextWrapper)
+  const { temp1, temp2} = useContext(TempValueContextWrapper)
   return (
     <RankingComponents>
       <h1>RANKING</h1>

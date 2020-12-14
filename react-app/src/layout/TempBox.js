@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 
 const ListComponents = styled.div`
-    width: 300px;
+    width: 90%;
     display: flex;
     flex-direction: row;
     margin: 15px 0 15px 15px;
@@ -11,10 +11,10 @@ const ListComponents = styled.div`
 `
 
 const CompoLeft = styled.div`
-    background-color: #66CDAA;
+    background-color: rgba(150, 231, 247, 1);
     width: 40%;
-    height: 100px;
-    border-radius: 30px 0 0 30px;
+    height: 14vh;
+    border-radius: 36px 0 0 36px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,8 +26,8 @@ const CompoLeft = styled.div`
 const CompoRight = styled.div`
     background-color: #fff;
     width: 50%;
-    height: 100px;
-    border-radius: 0 30px 30px 0;
+    height: 14vh;
+    border-radius: 0 36px 36px 0;
     display: flex;
     justify-content: center;
     align-items: center;

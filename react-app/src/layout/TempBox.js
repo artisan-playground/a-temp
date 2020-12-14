@@ -51,7 +51,7 @@ const TempBox = ({Hander, Temp}) => {
     return (
     	<ListComponents>
 			<CompoLeft>
-				{Hander} °C
+				{Hander}
 			</CompoLeft>
 			<CompoRight>
 				{Temp} °C

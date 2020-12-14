@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import Logo from '../assets/logo.png'
 
 const MainFooter = styled.footer`
   padding: 2%;
@@ -15,12 +16,16 @@ const MainFooter = styled.footer`
     padding: 5px;
     background-color: gray;
   }
+  img{
+      width: 5rem;
+      padding-bottom: 1rem;
+  }
 `
 
 const Footer = () => {
   return (
     <MainFooter>
-      <h1>LOGO</h1>
+      <img src={Logo} />
       <p>© 2020 Artisan Digital Asia</p>
     </MainFooter>
   )

@@ -1,8 +1,7 @@
 import styled from 'styled-components'
 
 export const RankingComponents = styled.div`
-  height: 90vh;
-  padding: 0 100px;
+  height: 53vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

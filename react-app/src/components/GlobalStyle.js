@@ -6,7 +6,6 @@ const GlobalStyle = createGlobalStyle`
 
  html, body, #root {
    height: 100vh;
-   width: 100vw;
    /* overflow-x: hidden; */
 
    font-family: 'Roboto', sans-serif;

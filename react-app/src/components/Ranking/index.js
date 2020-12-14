@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-import BgRanking from '../../assets/BgRanking.png'
 import { TempValueContextWrapper } from '../../contexts/TempValueContext'
 import TableCard from '../../layout/Table'
 import { RankingComponents, RankingDetails } from './RankingElements'
@@ -10,7 +9,6 @@ const Ranking = () => {
     <RankingComponents>
       <h1>RANKING</h1>
       <RankingDetails>
-        <img src={BgRanking} />
         <TableCard No="NO." Location="Location" Temperature="Temperature"></TableCard>
 
         {temp1 > temp2 ? (

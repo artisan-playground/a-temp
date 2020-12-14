@@ -61,7 +61,7 @@ app.get('/query', (req, res) => {
 })
 
 app.get('/api/version', (req, res) => {
-  res.status(200).send(`${version}-3`)
+  res.status(200).send(`${version}`)
 })
 
 app.post('/api/line/webhook', require('./server.line.js').webhook)
@@ -75,4 +75,4 @@ paths.forEach((path, idx) => {
 // console.log(process.env)
 //start app
 const port = process.env.PORT || 4000
-app.listen(port, () => console.log(`App is listening on port ${port}.`))
+app.listen(port, () => console.log(`App ${version} is listening on port ${port}.`))

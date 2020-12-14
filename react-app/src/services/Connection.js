@@ -1,32 +1,32 @@
-import React, {useContext} from 'react'
-import {TempValueContextWrapper} from '../contexts/TempValueContext'
+import React, { useContext } from 'react'
+import { TempValueContextWrapper } from '../contexts/TempValueContext'
 
 let note
 
 const mqtt    = require('mqtt')
 const options = {
     protocol: 'mqtts',
-    clientId: 'b0908853' + Math.random()   
+    clientId: 'b0908853' + Math.random()
 }
 const client  = mqtt.connect('mqtt://mqtt.artisandigital.tech:8883', options)
 client.subscribe('dii/+/status')
 
 const Connection = () => {
 
-    const {temp1,setTemp1,temp2,setTemp2,maxTemp,setMaxTemp,minTemp,setMinTemp,tempAvg, setTempAvg}= useContext(TempValueContextWrapper)
+    const {temp1,setTemp1,temp2,setTemp2,maxTemp,setMaxTemp,minTemp,setMinTemp,setTempAvg}= useContext(TempValueContextWrapper)
 
     client.on('connect', function () {
         console.log("connect")
     })
-    client.on('message',async function (topic, message) { 
+    client.on('message',async function (topic, message) {
         note = message.toString()
         note = JSON.parse(note)
         if ( note.d.myName ===  "Boat-001") {
-            setTemp1(note.d.temperature)    
-        }     
+            setTemp1(note.d.temperature)
+        }
         if ( note.d.myName ===  "Arm-001") {
-            setTemp2(note.d.temperature) 
-        }      
+            setTemp2(note.d.temperature)
+        }
     })
 
     if (temp1 < minTemp && temp1 !== null) {

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 export const Nav = styled.nav`
     height: 8vh;
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -14,18 +14,14 @@ export const Nav = styled.nav`
     background-color: whitesmoke;
     color: black;
     box-shadow: -2vw -18px 35px #000000;
-
-    a {
-      height: 30px;
-    }
 `
 
 export const NavLogo = styled(Link)`
-    font-size: 30px;
-    padding: 5px;
-    background-color: gray;
-    height: 100%;
-    margin-left: 24px;
+
+    img{
+      width: 3rem;
+      padding-left: 1rem;
+    }
 `
 
 export const NavLink = styled(Link)`

@@ -3,63 +3,60 @@ import { NavLink as Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const Nav = styled.nav`
-    height: 64px;
-    width: 100vw;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem;
-    position: fixed;
-    z-index: 9999;
-    background-color: whitesmoke;
-    color: black;
-    box-shadow: 0px -22px 50px #000000;
+  height: 64px;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  position: fixed;
+  z-index: 9999;
+  background-color: whitesmoke;
+  color: black;
+  box-shadow: 0px -22px 50px #000000;
 `
 
 export const NavLogo = styled(Link)`
-    img{
-      width: 3.5rem;
-      padding-left: 0.5rem;
-    }
+  img {
+    width: 3.5rem;
+    padding-left: 0.5rem;
+  }
 `
 
-export const NavLink = styled(Link)`
-    display: flex;
-    align-items: center;
-    padding-right: 4rem;
-    height: 100%;
-    cursor: pointer;
-    &.active {
-      border-bottom: 5px solid #CFE7F7;
-    }
-    a{
-      text-transform: uppercase;
-      text-decoration: none;
-      letter-spacing: 0.15em;
-      padding: 0.5rem 0;
+export const NavLink = styled.div`
+  display: flex;
+  align-items: center;
+  padding-right: 4rem;
+  height: 100%;
+  cursor: pointer;
+  a {
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0.15em;
+    padding: 0.5rem 0;
 
-      position: relative;
-      &::after{
-        background: none repeat scroll 0 0 transparent;
-        bottom: 0;
-        content: "";
-        display: block;
-        height: 2px;
-        left: 50%;
-        position: absolute;
-        background: black;
-        transition: width 0.3s ease 0s, left 0.3s ease 0s;
-        width: 0;
-        height: 0.3rem;
-        background-color: #CFE7F7;
-      }
-      &:hover::after {
-        width: 100%;
-        background-color: #CFE7F7;
-        height: 0.3rem;
-        left: 0;
-      }
+    position: relative;
+    &::after {
+      background: none repeat scroll 0 0 transparent;
+      bottom: 0;
+      content: '';
+      display: block;
+      height: 2px;
+      left: 50%;
+      position: absolute;
+      background: black;
+      transition: width 0.3s ease 0s, left 0.3s ease 0s;
+      width: 0;
+      height: 0.3rem;
+      background-color: #cfe7f7;
     }
+    &:hover::after {
+      width: 100%;
+      background-color: #cfe7f7;
+      height: 0.3rem;
+      left: 0;
+    }
+  }
 `
 export const Bars = styled(FaBars)`
   display: none;
